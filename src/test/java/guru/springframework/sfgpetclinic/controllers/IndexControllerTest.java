@@ -1,7 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +26,8 @@ class IndexControllerTest {
     @Test
     @DisplayName("Test Exception")
     void oupsHandler() {
-        assertTrue("notimplemented".equals(controller.oupsHandler()), () -> "This is something expensive");
+        assertThrows(ValueNotFoundException.class, () -> {
+            controller.oops();
+        });
     }
 }
